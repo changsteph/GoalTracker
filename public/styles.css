@@ -1,0 +1,9 @@
+.time-block{
+    border: 1px dotted gray;
+    border-top: none;
+    margin: 0;
+}
+
+.top-time{
+    border-top: 1px dotted gray;
+}
