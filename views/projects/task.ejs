@@ -1,0 +1,20 @@
+<%- layout('layouts/layout') %>
+
+<h1><%= task.name %></h1>
+<p><%= task.deadline %></p>
+<p><%= task.description %></p>
+<hr>
+<% if(task.subtasks.length > 0){ %> 
+    <ul>
+        <% for(let subtask of task.subtasks){ %>
+            <li><%= subtask %></li>
+        <% } %>
+    </ul>
+<% } %> 
+<hr>
+<form action="/projects/<%= id %>/tasks/<%= task._id %>" method="POST">
+    <label for="subtask">Subtask Name</label>
+    <input type="text" name="subtask" id="subtask" autocomplete="off">
+    <button>Add Subtask</button>
+</form>
+<a href="/projects/<%= id %>">Back to Project</a>

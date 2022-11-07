@@ -1,0 +1,23 @@
+<%- layout('layouts/layout') %> 
+<h1><%= project.name %></h1> 
+<h5><%= project.deadline %></h5>
+<p><%= project.description %></p>
+<ul>
+    <% for(task of project.tasks){ %> 
+        <a href="/projects/<%= project._id %>/tasks/<%= task._id %>"><li>
+            <%= task.name %>
+        </li></a>
+    <% } %> 
+</ul>
+<hr>
+<h5>Add new Task to <%= project.name %></h3>
+<form action="/projects/<%= project._id %>" method="POST">
+    <label for="name">Task Name</label>
+    <input type="text" id="name" name="task[name]" autocomplete="off">
+    <label for="description">Task Description</label>
+    <textarea id="description" name="task[description]"></textarea>
+    <label for="deadline">Task Deadline</label>
+    <input type="date" id="deadline" name="task[deadline]">
+    <button>Add Task</button>
+</form>
+<a href="/projects">Back to all Projects</a>
