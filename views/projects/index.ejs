@@ -1,18 +1,11 @@
-<h2>In Progress Projects</h2>
+<%- layout('/layouts/layout') %> 
+<h2>Current Projects</h2>
 <div class="row">
-    <div class="col-lg-2 project-tab">
-        <h5>Project 1</h5>
-    </div>
-    <div class="col-lg-2 project-tab">
-        <h5>Project 2</h5>
-    </div>
-    <div class="col-lg-2 project-tab">
-        <h5>Project 3</h5>
-    </div>
-    <div class="col-lg-2 project-tab">
-        <h5>Project 1</h5>
-    </div>
-    <div class="col-lg-2 project-tab">
-        <h5>Add a project</h5>
-    </div>
+    <% projects.forEach(project => { %>
+        <div class="col-lg-2 project-tab">
+            <h3><%= project.name %></h3>
+            <p><%= project.deadline %></p>
+        </div>
+    <% }) %> 
 </div>
+<a href="/projects/new">Create a new Project</a>
