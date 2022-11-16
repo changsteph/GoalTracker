@@ -1,0 +1,12 @@
+<%- layout('layouts/layout') %> 
+<h2>Edit Task</h2>
+<form action="/projects/<%= id %>/tasks/<%= task._id %>?_method=PUT" method="POST">
+        <label for="name">Task Name</label>
+        <input type="text" id="name" name="task[name]" autocomplete="off" value="<%= task.name %>">
+        <label for="description">Task Description</label>
+        <textarea id="description" name="task[description]"><%= task.description %></textarea>
+        <label for="deadline">Task Deadline</label>
+        <input type="date" id="deadline" name="task[deadline]" value="<%= task.deadline %>" >
+        <button>Save Task</button>
+</form>
+<a href="/projects/<%= id %>/tasks/<%= task._id %>">Cancel Changes</a>

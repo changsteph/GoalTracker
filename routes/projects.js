@@ -72,5 +72,33 @@ router.route('/:id/tasks/:taskId')
             res.redirect(`/projects/${req.params.id}`);
         }
     })
+    .delete(async (req, res) => {
+        try{
+            const {id, taskId} = req.params;
+            await Project.findByIdAndUpdate(id, {$pull: {tasks: taskId}});
+            await Task.findByIdAndDelete(taskId);
+        }catch{
+            console.log('oops :(');
+        }
+        res.redirect(`/projects/${req.params.id}`);
+    })
+    .put(async (req, res) => {
+        try{
+            await Task.findByIdAndUpdate(req.params.taskId, {...req.body.task});
+            res.redirect(`/projects/${req.params.id}/tasks/${req.params.taskId}`);
+        }catch{
+            res.send(" :( ");
+        }
+    });
+
+    router.get('/:id/tasks/:taskId/edit', async (req, res) => {
+        try{
+            const task = await Task.findById(req.params.taskId);
+            console.log(task);
+            res.render('tasks/edit', {id: req.params.id, task});
+        }catch{
+            res.send(" :( ");
+        }
+    })
 
 module.exports = router;

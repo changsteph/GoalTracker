@@ -12,6 +12,10 @@
     </ul>
 <% } %> 
 <hr>
+<a href="/projects/<%= id %>/tasks/<%= task._id %>/edit">Edit Task</a>
+<form action="/projects/<%= id %>/tasks/<%= task._id %>?_method=DELETE" method="POST">
+    <button>Delete Task</button>
+</form>
 <form action="/projects/<%= id %>/tasks/<%= task._id %>" method="POST">
     <label for="subtask">Subtask Name</label>
     <input type="text" name="subtask" id="subtask" autocomplete="off">

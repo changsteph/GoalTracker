@@ -6,6 +6,7 @@ const express = require('express');
 const app = express();
 const ejsMate = require('ejs-mate');
 const path = require('path');
+const methodOverride = require('method-override');
 
 const indexRouter = require('./routes/index');
 const projectRouter = require('./routes/projects');
@@ -17,6 +18,7 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({extended: true}));
+app.use(methodOverride('_method'));
 
 const mongoose = require('mongoose');
 mongoose.connect(process.env.DATABASE_URL);
